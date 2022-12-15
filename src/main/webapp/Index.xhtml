@@ -17,10 +17,16 @@
 			<h:outputText value="Descrição" />
 			<h:inputTextarea />
 		</h:panelGrid>
+		<h:panelGrid columns="4">
+			<h:outputText value="Responsável" />
+			<h:selectOneMenu>
+				<f:selectItem itemLabel="Maria" itemValue="Maria"/>
+				<f:selectItem itemLabel="Pedro" itemValue="Pedro"/>
+				<f:selectItem itemLabel="Ana" itemValue="Ana"/>
+			</h:selectOneMenu>
+		</h:panelGrid>
 
-
-		<h:outputText value="Responsável" />
-
+		<h:outputText value="Salvar" />
 		<h:commandButton value="Salvar" />
 	</h:form>
 </h:body>
