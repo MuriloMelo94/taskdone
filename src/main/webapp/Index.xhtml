@@ -40,7 +40,7 @@
 		<h:commandButton value="Salvar" action="#{tarefaManageBean.salvaNovaTarefa}" />
 	</h:form>
 	<h2>Lista de Tarefas</h2>
-	<h:dataTable value="#{tarefaManageBean.listaTarefas}" var="referencia">
+	<h:dataTable value="#{tarefaManageBean.listaTarefas}" var="referencia" border="1">
 		<h:column>#{referencia.titulo}</h:column>
 		<h:column>#{referencia.descricao}</h:column>
 		<h:column>#{referencia.responsavel}</h:column>

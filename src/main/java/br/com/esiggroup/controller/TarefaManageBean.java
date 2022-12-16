@@ -24,7 +24,12 @@ public class TarefaManageBean implements Serializable{
 	public String salvaNovaTarefa() {
 		listaTarefas.add(tarefas);
 		System.out.println("A tarefa: " + tarefas.getTitulo()+ " foi salva com sucesso!");
+		limpaTela();
 		return "";
+	}
+	
+	public void limpaTela() {
+		this.tarefas = new Tarefa();
 	}
 	
 	public Tarefa getTarefas() {
@@ -43,5 +48,4 @@ public class TarefaManageBean implements Serializable{
 		this.listaTarefas = listaTarefas;
 	}
 	
-
 }
