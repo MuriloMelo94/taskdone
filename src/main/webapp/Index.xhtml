@@ -19,13 +19,13 @@
 		</h:panelGrid>
 		<h:panelGrid columns="4">
 			<h:outputText value="Responsável" />
-			<h:selectOneMenu>
+			<h:selectOneMenu value="#{tarefaManageBean.tarefas.responsavel}">
 				<f:selectItem itemLabel="Maria" itemValue="Maria"/>
 				<f:selectItem itemLabel="Pedro" itemValue="Pedro"/>
 				<f:selectItem itemLabel="Ana" itemValue="Ana"/>
 			</h:selectOneMenu>
 			<h:outputText value="Prioridade" />
-			<h:selectOneRadio>
+			<h:selectOneRadio value="#{tarefaManageBean.tarefas.prioridade}">
 				<f:selectItem itemLabel="Baixa" itemValue="Baixa"/>
 				<f:selectItem itemLabel="Media" itemValue="Media"/>
 				<f:selectItem itemLabel="Alta" itemValue="Alta"/>
@@ -33,11 +33,11 @@
 		</h:panelGrid>
 		<h:panelGrid columns="2">
 			<h:outputText value="Deadline" />
-			<h:inputText />
+			<h:inputText value="#{tarefaManageBean.tarefas.deadline}" />
 		</h:panelGrid>
 
 		<h:outputText value="Salvar" />
-		<h:commandButton value="Salvar" />
+		<h:commandButton value="Salvar" action="#{tarefaManageBean.salvaNovaTarefa}" />
 	</h:form>
 </h:body>
 </html>
