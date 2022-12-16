@@ -42,11 +42,11 @@
 	</h:form>
 	<h2>Lista de Tarefas</h2>
 	<p:dataTable value="#{tarefaManageBean.listaTarefas}" var="referencia" border="1">
-		<p:column>#{referencia.titulo}</p:column>
-		<p:column>#{referencia.descricao}</p:column>
-		<p:column>#{referencia.responsavel}</p:column>
-		<p:column>#{referencia.prioridade}</p:column>
-		<p:column>#{referencia.deadline}</p:column>
+		<p:column headerText="Título">#{referencia.titulo}</p:column>
+		<p:column headerText="Descrição">#{referencia.descricao}</p:column>
+		<p:column headerText="Responsável">#{referencia.responsavel}</p:column>
+		<p:column headerText="Prioridade">#{referencia.prioridade}</p:column>
+		<p:column headerText="Deadline">#{referencia.deadline}</p:column>
 	</p:dataTable>
 </h:body>
 </html>
