@@ -12,10 +12,10 @@
 	<h:form>
 		<h:panelGrid columns="2">
 			<h:outputText value="Título da Atividade:" />
-			<h:inputText />
+			<h:inputText value="#{tarefaManageBean.tarefas.titulo}" />
 
 			<h:outputText value="Descrição" />
-			<h:inputTextarea />
+			<h:inputTextarea value="#{tarefaManageBean.tarefas.descricao}" />
 		</h:panelGrid>
 		<h:panelGrid columns="4">
 			<h:outputText value="Responsável" />
