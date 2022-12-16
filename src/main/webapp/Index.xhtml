@@ -39,5 +39,13 @@
 		<h:outputText value="Salvar" />
 		<h:commandButton value="Salvar" action="#{tarefaManageBean.salvaNovaTarefa}" />
 	</h:form>
+	<h2>Lista de Tarefas</h2>
+	<h:dataTable value="#{tarefaManageBean.listaTarefas}" var="referencia">
+		<h:column>#{referencia.titulo}</h:column>
+		<h:column>#{referencia.descricao}</h:column>
+		<h:column>#{referencia.responsavel}</h:column>
+		<h:column>#{referencia.prioridade}</h:column>
+		<h:column>#{referencia.deadline}</h:column>
+	</h:dataTable>
 </h:body>
 </html>
