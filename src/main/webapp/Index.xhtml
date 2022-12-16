@@ -12,41 +12,41 @@
 	<h1>Task Done!</h1>
 	<h:form>
 		<h:panelGrid columns="2">
-			<h:outputText value="Título da Atividade:" />
-			<h:inputText value="#{tarefaManageBean.tarefas.titulo}" />
+			<p:outputLabel value="Título da Atividade:" />
+			<p:inputText value="#{tarefaManageBean.tarefas.titulo}" />
 
-			<h:outputText value="Descrição" />
-			<h:inputTextarea value="#{tarefaManageBean.tarefas.descricao}" />
+			<p:outputLabel value="Descrição" />
+			<p:inputTextarea value="#{tarefaManageBean.tarefas.descricao}" />
 		</h:panelGrid>
 		<h:panelGrid columns="4">
-			<h:outputText value="Responsável" />
-			<h:selectOneMenu value="#{tarefaManageBean.tarefas.responsavel}">
+			<p:outputLabel value="Responsável" />
+			<p:selectOneMenu value="#{tarefaManageBean.tarefas.responsavel}">
 				<f:selectItem itemLabel="Maria" itemValue="Maria"/>
 				<f:selectItem itemLabel="Pedro" itemValue="Pedro"/>
 				<f:selectItem itemLabel="Ana" itemValue="Ana"/>
-			</h:selectOneMenu>
-			<h:outputText value="Prioridade" />
-			<h:selectOneRadio value="#{tarefaManageBean.tarefas.prioridade}">
+			</p:selectOneMenu>
+			<p:outputLabel value="Prioridade" />
+			<p:selectOneRadio value="#{tarefaManageBean.tarefas.prioridade}">
 				<f:selectItem itemLabel="Baixa" itemValue="Baixa"/>
 				<f:selectItem itemLabel="Media" itemValue="Media"/>
 				<f:selectItem itemLabel="Alta" itemValue="Alta"/>
-			</h:selectOneRadio>
+			</p:selectOneRadio>
 		</h:panelGrid>
 		<h:panelGrid columns="2">
-			<h:outputText value="Deadline" />
-			<h:inputText value="#{tarefaManageBean.tarefas.deadline}" />
+			<p:outputLabel value="Deadline" />
+			<p:inputText value="#{tarefaManageBean.tarefas.deadline}" />
 		</h:panelGrid>
 
-		<h:outputText value="Salvar" />
-		<h:commandButton value="Salvar" action="#{tarefaManageBean.salvaNovaTarefa}" />
+		<p:outputLabel value="Salvar" />
+		<p:commandButton value="Salvar" action="#{tarefaManageBean.salvaNovaTarefa}" />
 	</h:form>
 	<h2>Lista de Tarefas</h2>
-	<h:dataTable value="#{tarefaManageBean.listaTarefas}" var="referencia" border="1">
-		<h:column>#{referencia.titulo}</h:column>
-		<h:column>#{referencia.descricao}</h:column>
-		<h:column>#{referencia.responsavel}</h:column>
-		<h:column>#{referencia.prioridade}</h:column>
-		<h:column>#{referencia.deadline}</h:column>
-	</h:dataTable>
+	<p:dataTable value="#{tarefaManageBean.listaTarefas}" var="referencia" border="1">
+		<p:column>#{referencia.titulo}</p:column>
+		<p:column>#{referencia.descricao}</p:column>
+		<p:column>#{referencia.responsavel}</p:column>
+		<p:column>#{referencia.prioridade}</p:column>
+		<p:column>#{referencia.deadline}</p:column>
+	</p:dataTable>
 </h:body>
 </html>
