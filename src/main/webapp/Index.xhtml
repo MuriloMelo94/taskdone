@@ -1,53 +1,62 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://xmlns.jcp.org/jsf/html"
-	  xmlns:f="http://xmlns.jcp.org/jsf/core"
-	  xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="styles.css" />
 	<title>Task Done</title>
 </h:head>
+
 <h:body>
-	<header>
-		<h1><h:graphicImage id="logo" library="images" name="logo-TaskDone.png" /></h1>
-	</header>
-	<h:form>
-		<h:panelGrid columns="2">
-			<p:outputLabel value="Título da Atividade:" />
-			<p:inputText value="#{tarefaManageBean.tarefas.titulo}" />
-
-			<p:outputLabel value="Descrição" />
-			<p:inputTextarea value="#{tarefaManageBean.tarefas.descricao}" />
-		</h:panelGrid>
-		<h:panelGrid columns="4">
-			<p:outputLabel value="Responsável" />
-			<p:selectOneMenu value="#{tarefaManageBean.tarefas.responsavel}">
-				<f:selectItem itemLabel="Maria" itemValue="Maria"/>
-				<f:selectItem itemLabel="Pedro" itemValue="Pedro"/>
-				<f:selectItem itemLabel="Ana" itemValue="Ana"/>
-			</p:selectOneMenu>
-			<p:outputLabel value="Prioridade" />
-			<p:selectOneRadio value="#{tarefaManageBean.tarefas.prioridade}">
-				<f:selectItem itemLabel="Baixa" itemValue="Baixa"/>
-				<f:selectItem itemLabel="Media" itemValue="Media"/>
-				<f:selectItem itemLabel="Alta" itemValue="Alta"/>
-			</p:selectOneRadio>
-		</h:panelGrid>
-		<h:panelGrid columns="2">
-			<p:outputLabel value="Deadline" />
-			<p:inputText value="#{tarefaManageBean.tarefas.deadline}" />
-		</h:panelGrid>
-
-		<p:commandButton value="Salvar" action="#{tarefaManageBean.salvaNovaTarefa}" />
-	</h:form>
-	<h2>Lista de Tarefas</h2>
-	<p:dataTable value="#{tarefaManageBean.listaTarefas}" var="referencia" border="1">
-		<p:column headerText="Título">#{referencia.titulo}</p:column>
-		<p:column headerText="Descrição">#{referencia.descricao}</p:column>
-		<p:column headerText="Responsável">#{referencia.responsavel}</p:column>
-		<p:column headerText="Prioridade">#{referencia.prioridade}</p:column>
-		<p:column headerText="Deadline">#{referencia.deadline}</p:column>
-	</p:dataTable>
+	<div id="header" class="center">
+		<h:graphicImage id="logo" library="images" name="logo.png" />
+	</div>
+	<div class="formulario center">
+		<h:form id="form">
+			<h:panelGrid columns="2">
+				<p:outputLabel value="Título da Atividade:" />
+				<p:inputText value="#{tarefaManageBean.tarefas.titulo}" />
+				<p:outputLabel value="Descrição" />
+				<p:inputTextarea value="#{tarefaManageBean.tarefas.descricao}" />
+			</h:panelGrid>
+			<h:panelGrid columns="4">
+				<p:outputLabel value="Responsável" />
+				<p:selectOneMenu value="#{tarefaManageBean.tarefas.responsavel}">
+					<f:selectItem itemLabel="Maria" itemValue="Maria" />
+					<f:selectItem itemLabel="Pedro" itemValue="Pedro" />
+					<f:selectItem itemLabel="Ana" itemValue="Ana" />
+				</p:selectOneMenu>
+				<p:outputLabel value="Prioridade" />
+				<p:selectOneRadio value="#{tarefaManageBean.tarefas.prioridade}">
+					<f:selectItem itemLabel="Baixa" itemValue="Baixa" />
+					<f:selectItem itemLabel="Media" itemValue="Media" />
+					<f:selectItem itemLabel="Alta" itemValue="Alta" />
+				</p:selectOneRadio>
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<p:outputLabel value="Deadline" />
+				<p:inputText value="#{tarefaManageBean.tarefas.deadline}" type="date" />
+			</h:panelGrid>
+			<h:panelGroup styleClass="center">
+				<p:commandButton id="botao-enviar" value="Salvar"
+					action="#{tarefaManageBean.salvaNovaTarefa}" update="form table" />
+			</h:panelGroup>
+		</h:form>
+	</div>
+	<h2 class="center margemtopo">Lista de Tarefas</h2>
+	<h:panelGroup styleClass="center">
+		<p:dataTable id="table" value="#{tarefaManageBean.listaTarefas}"
+			var="referencia" border="1">
+			<p:column headerText="Título">#{referencia.titulo}</p:column>
+			<p:column headerText="Descrição">#{referencia.descricao}</p:column>
+			<p:column headerText="Responsável">#{referencia.responsavel}</p:column>
+			<p:column headerText="Prioridade">#{referencia.prioridade}</p:column>
+			<p:column headerText="Deadline">#{referencia.deadline}</p:column>
+		</p:dataTable>
+	</h:panelGroup>
 </h:body>
 </html>
