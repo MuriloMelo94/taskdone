@@ -16,6 +16,10 @@ body{
 	margin-top: 100px;
 }
 
+.margembottom{
+	margin-bottom: 50px;
+}
+
 #header{
 	width: 100%;
 	height: 15vh;
@@ -71,6 +75,7 @@ body{
 #table{
 	width: 80%;
 	border: 1px solid #6a87d5;
+	margin-bottom: 50px;
 }
 
 

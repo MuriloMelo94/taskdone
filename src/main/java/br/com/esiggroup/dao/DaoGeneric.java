@@ -20,6 +20,21 @@ public class DaoGeneric<E> {
 		entityTransaction.commit();
 		entityManager.close();
 	}
+	
+	
+	public E merge(E entidade) {
+		
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		
+		E retorno = entityManager.merge(entidade);
+		
+		entityTransaction.commit();
+		entityManager.close();
+		
+		return retorno;
+	}
 		
 	
 	public List<E> getListEntity(Class<E> entidade){
@@ -35,4 +50,18 @@ public class DaoGeneric<E> {
 		
 		return retorno;
 	}
+	
+	public void excluir(E entidade) {
+		
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		
+		Object id = JPAUtil.getPrimaryKey(entidade);
+		entityManager.createQuery("delete from " + entidade.getClass() + " where id = " + id).executeUpdate();
+		
+		entityTransaction.commit();
+		entityManager.close();
+	}
+	
 }

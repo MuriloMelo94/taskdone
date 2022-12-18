@@ -18,6 +18,8 @@
 	<div class="formulario center">
 		<h:form id="form">
 			<h:panelGrid columns="2">
+				<p:outputLabel value="Id" rendered="false"/>
+				<p:inputNumber value="#{tarefaManageBean.tarefas.id}" readonly="true" rendered="false"/>
 				<p:outputLabel value="Título da Atividade:" />
 				<p:inputText value="#{tarefaManageBean.tarefas.titulo}" />
 				<p:outputLabel value="Descrição" />
@@ -42,8 +44,10 @@
 				<p:inputText value="#{tarefaManageBean.tarefas.deadline}" />
 			</h:panelGrid>
 			<h:panelGroup styleClass="center">
-				<p:commandButton id="botao-salvar" value="Salvar" styleClass="botaosalvar"
+				<p:commandButton id="botao-salvar" value="Salvar / Atualizar" styleClass="botaosalvar"
 					action="#{tarefaManageBean.salvaNovaTarefa}" update="form table" />
+				<p:commandButton id="botao-concluir" value="Concluir" styleClass="botaosalvar"
+					action="#{tarefaManageBean.excluirTarefa}" update="form table" />
 			</h:panelGroup>
 		</h:form>
 	</div>

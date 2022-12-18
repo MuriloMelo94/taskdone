@@ -31,6 +31,11 @@ public class TarefaManageBean implements Serializable{
 		return "";
 	}
 	
+	public String excluirTarefa() {
+		daoGeneric.excluir(tarefas);
+		return "";
+	}
+	
 	@PostConstruct
 	public void listarTarefas() {
 		tarefaListada = daoGeneric.getListEntity(Tarefa.class);
