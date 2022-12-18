@@ -50,7 +50,7 @@
 			<h:panelGroup styleClass="center">
 				<p:commandButton id="botao-salvar" value="Salvar"
 					styleClass="botaosalvar"
-					action="#{tarefaManageBean.salvaNovaTarefa}" update="form table" />
+					action="#{tarefaManageBean.atualizarTarefa}" update="form table" />
 			</h:panelGroup>
 		</h:form>
 	</div>
@@ -61,48 +61,16 @@
 		<p:dataTable id="table" value="#{tarefaManageBean.tarefaListada}"
 			var="referencia" border="1" editable="true">
 
-			<p:ajax event="rowEdit" listener="#{tarefaManageBean.onRowEdit}" update=":form:msgs"/>
+			<p:ajax event="rowEdit" listener="#{tarefaManageBean.onRowEdit}" update="form :form:msgs"/>
             <p:ajax event="rowEditCancel" listener="#{tarefaManageBean.onRowCancel}" update=":form:msgs"/>
-
-			<p:column headerText="Título">
-				<p:cellEditor>
-					<f:facet name="output">
-						<h:outputText value="#{referencia.titulo}" />
-					</f:facet>
-					<f:facet name="input">
-						<p:inputText id="inputTitulo" value="#{referencia.titulo}"
-							style="width:100%" />
-					</f:facet>
-				</p:cellEditor>
-			</p:column>
-
-
-			<p:column headerText="Descrição">
-				<p:cellEditor>
-					<f:facet name="output">
-						<h:outputText value="#{referencia.descricao}" />
-					</f:facet>
-					<f:facet name="input">
-						<p:inputText id="inputDescricao" value="#{referencia.descricao}"
-							style="width:100%" />
-					</f:facet>
-				</p:cellEditor>
-			</p:column>
 			
+			<p:column headerText="Id" rendered="false" >#{referencia.id}</p:column>
+			
+			<p:column headerText="Título">#{referencia.titulo}</p:column>
+			<p:column headerText="Descrição">#{referencia.descricao}</p:column>
 			<p:column headerText="Responsável" style="width:100px">#{referencia.responsavel}</p:column>
 			<p:column headerText="Prioridade" style="width:100px">#{referencia.prioridade}</p:column>
-			
-			<p:column headerText="Deadline" style="width:120px">
-				<p:cellEditor>
-					<f:facet name="output">
-						<h:outputText value="#{referencia.deadline}" />
-					</f:facet>
-					<f:facet name="input">
-						<p:inputText id="inputDeadline" value="#{referencia.deadline}"
-							style="width:100%" />
-					</f:facet>
-				</p:cellEditor>
-			</p:column>
+			<p:column headerText="Deadline" style="width:120px">#{referencia.deadline}</p:column>
 			
 			<p:column headerText="Editar" style="width:80px">
 				<p:rowEditor editTitle="Edit Row" cancelTitle="Cancel Edit"

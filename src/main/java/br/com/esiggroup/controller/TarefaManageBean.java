@@ -40,8 +40,25 @@ public class TarefaManageBean implements Serializable{
 		return "";
 	}
 	
+	public String atualizarTarefa() {
+		daoGeneric.merge(tarefas);
+		tarefas = new Tarefa();
+		listarTarefas();
+		return "";
+	}
+	
     public void onRowEdit(RowEditEvent<Tarefa> event) {
-        FacesMessage msg = new FacesMessage("Tarefa Editada");
+        
+    	tarefas = new Tarefa();
+    	
+    	tarefas.setId(event.getObject().getId());
+    	tarefas.setTitulo(event.getObject().getTitulo());
+    	tarefas.setDescricao(event.getObject().getDescricao());
+    	tarefas.setResponsavel(event.getObject().getResponsavel());
+    	tarefas.setPrioridade(event.getObject().getPrioridade());
+    	tarefas.setDeadline(event.getObject().getDeadline());
+    	
+    	FacesMessage msg = new FacesMessage("Gerencie sua Tarefa");
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
