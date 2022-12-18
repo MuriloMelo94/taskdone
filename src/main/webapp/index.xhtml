@@ -39,7 +39,7 @@
 			</h:panelGrid>
 			<h:panelGrid columns="2">
 				<p:outputLabel value="Deadline" />
-				<p:inputText value="#{tarefaManageBean.tarefas.deadline}" type="date" />
+				<p:inputText value="#{tarefaManageBean.tarefas.deadline}" />
 			</h:panelGrid>
 			<h:panelGroup styleClass="center">
 				<p:commandButton id="botao-salvar" value="Salvar" styleClass="botaosalvar"
@@ -49,8 +49,7 @@
 	</div>
 	<h2 class="center margemtopo">Lista de Tarefas</h2>
 	<h:panelGroup styleClass="center">
-		<p:dataTable id="table" value="#{tarefaManageBean.listaTarefas}"
-			var="referencia" border="1">
+		<p:dataTable id="table" value="#{tarefaManageBean.tarefaListada}" var="referencia" border="1">
 			<p:column headerText="Título">#{referencia.titulo}</p:column>
 			<p:column headerText="Descrição">#{referencia.descricao}</p:column>
 			<p:column headerText="Responsável">#{referencia.responsavel}</p:column>

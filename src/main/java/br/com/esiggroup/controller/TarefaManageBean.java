@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.com.esiggroup.dao.DaoGeneric;
 import br.com.esiggroup.model.Tarefa;
 
 @Named
@@ -19,19 +21,21 @@ public class TarefaManageBean implements Serializable{
 	@Inject
 	private Tarefa tarefas;
 	
-	private List<Tarefa> listaTarefas = new ArrayList<Tarefa>();
+	private DaoGeneric<Tarefa> daoGeneric = new DaoGeneric<Tarefa>();
+	private List<Tarefa> tarefaListada = new ArrayList<Tarefa>();
 
 	public String salvaNovaTarefa() {
-		listaTarefas.add(tarefas);
-		System.out.println("A tarefa: " + tarefas.getTitulo()+ " foi salva com sucesso!");
-		limpaTela();
+		daoGeneric.salvar(tarefas);
+		tarefas = new Tarefa();
+		listarTarefas();
 		return "";
 	}
 	
-	public void limpaTela() {
-		this.tarefas = new Tarefa();
+	@PostConstruct
+	public void listarTarefas() {
+		tarefaListada = daoGeneric.getListEntity(Tarefa.class);
 	}
-	
+
 	public Tarefa getTarefas() {
 		return tarefas;
 	}
@@ -40,12 +44,16 @@ public class TarefaManageBean implements Serializable{
 		this.tarefas = tarefas;
 	}
 
-	public List<Tarefa> getListaTarefas() {
-		return listaTarefas;
+	public DaoGeneric<Tarefa> getDaoGeneric() {
+		return daoGeneric;
 	}
 
-	public void setListaTarefas(List<Tarefa> listaTarefas) {
-		this.listaTarefas = listaTarefas;
+	public void setDaoGeneric(DaoGeneric<Tarefa> daoGeneric) {
+		this.daoGeneric = daoGeneric;
+	}
+	
+	public List<Tarefa> getTarefaListada() {
+		return tarefaListada;
 	}
 	
 }

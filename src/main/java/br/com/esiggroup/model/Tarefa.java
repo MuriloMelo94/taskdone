@@ -1,15 +1,12 @@
 package br.com.esiggroup.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 public class Tarefa implements Serializable{
@@ -24,9 +21,7 @@ public class Tarefa implements Serializable{
 	private String descricao;
 	private String responsavel;
 	private String prioridade;
-	
-	@Temporal(TemporalType.DATE)
-	private Date deadline;
+	private String deadline;
 	
 	public Tarefa() {
 		
@@ -72,11 +67,11 @@ public class Tarefa implements Serializable{
 		this.prioridade = prioridade;
 	}
 	
-	public Date getDeadline() {
+	public String getDeadline() {
 		return deadline;
 	}
 	
-	public void setDeadline(Date deadline) {
+	public void setDeadline(String deadline) {
 		this.deadline = deadline;
 	}
 
