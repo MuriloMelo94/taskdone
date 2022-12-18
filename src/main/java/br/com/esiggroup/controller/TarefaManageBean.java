@@ -35,8 +35,21 @@ public class TarefaManageBean implements Serializable{
 		return "";
 	}
 	
+	public String limparCampos(){
+		tarefas = new Tarefa();
+		listarTarefas();
+		return "";
+	}
+	
 	public String excluirTarefa() {
 		daoGeneric.excluir(tarefas);
+		listarTarefas();
+		return "";
+	}
+	
+	public String excluirTarefaListada(Tarefa listada) {
+		daoGeneric.excluir(listada);
+		listarTarefas();
 		return "";
 	}
 	

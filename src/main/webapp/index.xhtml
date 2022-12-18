@@ -48,6 +48,8 @@
 				<p:inputText value="#{tarefaManageBean.tarefas.deadline}" />
 			</h:panelGrid>
 			<h:panelGroup styleClass="center">
+			<p:commandButton id="botao-limpar" value="Limpar"
+					action="#{tarefaManageBean.limparCampos}" update="form table" />
 				<p:commandButton id="botao-salvar" value="Salvar"
 					styleClass="botaosalvar"
 					action="#{tarefaManageBean.atualizarTarefa}" update="form table" />
@@ -73,8 +75,12 @@
 			<p:column headerText="Deadline" style="width:120px">#{referencia.deadline}</p:column>
 			
 			<p:column headerText="Editar" style="width:80px">
-				<p:rowEditor editTitle="Edit Row" cancelTitle="Cancel Edit"
-					saveTitle="Save Row" />
+				<p:rowEditor editTitle="Editar Tarefa" cancelTitle="Cancelar"
+					saveTitle="Confirmar" />
+			</p:column>
+			<p:column headerText="Exluir" style="width:60px">
+			    <p:commandButton icon="pi pi-times" styleClass="rounded-button ui-button-danger" 
+			    action="#{tarefaManageBean.excluirTarefaListada(referencia)}" update="form table" />
 			</p:column>
 		</p:dataTable>
 	</h:panelGroup>
