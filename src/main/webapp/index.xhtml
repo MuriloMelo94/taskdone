@@ -25,13 +25,13 @@
 			</h:panelGrid>
 			<h:panelGrid columns="4">
 				<p:outputLabel value="Responsável" />
-				<p:selectOneMenu value="#{tarefaManageBean.tarefas.responsavel}">
+				<p:selectOneMenu styleClass="center" value="#{tarefaManageBean.tarefas.responsavel}">
 					<f:selectItem itemLabel="Maria" itemValue="Maria" />
 					<f:selectItem itemLabel="Pedro" itemValue="Pedro" />
 					<f:selectItem itemLabel="Ana" itemValue="Ana" />
 				</p:selectOneMenu>
 				<p:outputLabel value="Prioridade" />
-				<p:selectOneRadio value="#{tarefaManageBean.tarefas.prioridade}">
+				<p:selectOneRadio styleClass="center" value="#{tarefaManageBean.tarefas.prioridade}">
 					<f:selectItem itemLabel="Baixa" itemValue="Baixa" />
 					<f:selectItem itemLabel="Media" itemValue="Media" />
 					<f:selectItem itemLabel="Alta" itemValue="Alta" />
@@ -42,7 +42,7 @@
 				<p:inputText value="#{tarefaManageBean.tarefas.deadline}" type="date" />
 			</h:panelGrid>
 			<h:panelGroup styleClass="center">
-				<p:commandButton id="botao-enviar" value="Salvar"
+				<p:commandButton id="botao-salvar" value="Salvar" styleClass="botaosalvar"
 					action="#{tarefaManageBean.salvaNovaTarefa}" update="form table" />
 			</h:panelGroup>
 		</h:form>
