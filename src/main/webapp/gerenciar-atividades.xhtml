@@ -42,17 +42,16 @@
 			</h:panelGrid>
 			<h:panelGrid columns="2">
 				<p:outputLabel value="Deadline" />
-				<p:inputText value="#{tarefaManageBean.tarefas.deadline}"
-					type="date" />
+				<p:inputText value="#{tarefaManageBean.tarefas.deadline}" />
 			</h:panelGrid>
 			<h:panelGroup styleClass="center">
 				<p:commandButton id="botao-voltar" value="Voltar"
-					styleClass="botaovoltar" update="form" />
+					styleClass="botaovoltar" update="form" action="index.xhtml" />
 				<p:commandButton id="botao-salvar" value="Atualizar"
 					styleClass="botaosalvar"
 					action="#{tarefaManageBean.salvaNovaTarefa}" update="form" />
 				<p:commandButton id="botao-finalizar" value="Finalizar"
-					styleClass="botaofinalizar" update="form" />
+					styleClass="botaofinalizar" action="#{tarefaManageBean.excluirTarefa}" update="form" />
 			</h:panelGroup>
 		</h:form>
 	</div>

@@ -6,8 +6,12 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.primefaces.event.RowEditEvent;
 
 import br.com.esiggroup.dao.DaoGeneric;
 import br.com.esiggroup.model.Tarefa;
@@ -35,6 +39,16 @@ public class TarefaManageBean implements Serializable{
 		daoGeneric.excluir(tarefas);
 		return "";
 	}
+	
+    public void onRowEdit(RowEditEvent<Tarefa> event) {
+        FacesMessage msg = new FacesMessage("Tarefa Editada");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public void onRowCancel(RowEditEvent<Tarefa> event) {
+        FacesMessage msg = new FacesMessage("Edição Cancelada");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 	
 	@PostConstruct
 	public void listarTarefas() {
