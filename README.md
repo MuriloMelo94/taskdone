@@ -55,6 +55,5 @@ Up the system:
 -> Write the url below on your browser:
 -> localhost:8080/taskdone/index.xhtml
 ```
-localhost:8080/taskdone/index.xhtml
 
 And you're already good to go!
