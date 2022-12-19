@@ -65,6 +65,7 @@ public class TarefaManageBean implements Serializable{
     	tarefas = new Tarefa();
     	
     	tarefas.setId(event.getObject().getId());
+    	tarefas.setStatus(event.getObject().getStatus());
     	tarefas.setTitulo(event.getObject().getTitulo());
     	tarefas.setDescricao(event.getObject().getDescricao());
     	tarefas.setResponsavel(event.getObject().getResponsavel());
@@ -78,6 +79,12 @@ public class TarefaManageBean implements Serializable{
     public void onRowCancel(RowEditEvent<Tarefa> event) {
         FacesMessage msg = new FacesMessage("Edição Cancelada");
         FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
+    public void concluirTarefa(Tarefa listada) {
+    	listada.setStatus("Concluída");
+    	daoGeneric.merge(listada);
+    	listarTarefas();
     }
 	
 	@PostConstruct

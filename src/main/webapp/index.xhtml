@@ -17,7 +17,7 @@
 	</div>
 	<div class="formulario center">
 		<h:form id="form">
-		<p:growl id="msgs" showDetail="true"/>
+			<p:growl id="msgs" showDetail="true" />
 			<h:panelGrid columns="2">
 				<p:outputLabel value="Id" rendered="false" />
 				<p:inputNumber value="#{tarefaManageBean.tarefas.id}"
@@ -26,6 +26,12 @@
 				<p:inputText value="#{tarefaManageBean.tarefas.titulo}" />
 				<p:outputLabel value="Descrição" />
 				<p:inputTextarea value="#{tarefaManageBean.tarefas.descricao}" />
+				<p:outputLabel value="Status" rendered="false" />
+				<p:selectOneMenu styleClass="center" rendered="false"
+					value="#{tarefaManageBean.tarefas.status}">
+					<f:selectItem itemLabel="Em Andamento" itemValue="Em Andamento" />
+					<f:selectItem itemLabel="Concluída" itemValue="Concluída" />
+				</p:selectOneMenu>
 			</h:panelGrid>
 			<h:panelGrid columns="4">
 				<p:outputLabel value="Responsável" />
@@ -48,7 +54,7 @@
 				<p:inputText value="#{tarefaManageBean.tarefas.deadline}" />
 			</h:panelGrid>
 			<h:panelGroup styleClass="center">
-			<p:commandButton id="botao-limpar" value="Limpar"
+				<p:commandButton id="botao-limpar" value="Limpar"
 					action="#{tarefaManageBean.limparCampos}" update="form table" />
 				<p:commandButton id="botao-salvar" value="Salvar"
 					styleClass="botaosalvar"
@@ -63,24 +69,34 @@
 		<p:dataTable id="table" value="#{tarefaManageBean.tarefaListada}"
 			var="referencia" border="1" editable="true">
 
-			<p:ajax event="rowEdit" listener="#{tarefaManageBean.onRowEdit}" update="form :form:msgs"/>
-            <p:ajax event="rowEditCancel" listener="#{tarefaManageBean.onRowCancel}" update=":form:msgs"/>
-			
-			<p:column headerText="Id" rendered="false" >#{referencia.id}</p:column>
-			
+			<p:ajax event="rowEdit" listener="#{tarefaManageBean.onRowEdit}"
+				update="form :form:msgs" />
+			<p:ajax event="rowEditCancel"
+				listener="#{tarefaManageBean.onRowCancel}" update=":form:msgs" />
+
+			<p:column headerText="Id" rendered="false">#{referencia.id}</p:column>
+			<p:column headerText="Status" style="width:200px">#{referencia.status}</p:column>
+
 			<p:column headerText="Título">#{referencia.titulo}</p:column>
 			<p:column headerText="Descrição">#{referencia.descricao}</p:column>
 			<p:column headerText="Responsável" style="width:100px">#{referencia.responsavel}</p:column>
 			<p:column headerText="Prioridade" style="width:100px">#{referencia.prioridade}</p:column>
 			<p:column headerText="Deadline" style="width:120px">#{referencia.deadline}</p:column>
-			
-			<p:column headerText="Editar" style="width:80px">
+
+			<p:column headerText="Editar" style="width:60px">
 				<p:rowEditor editTitle="Editar Tarefa" cancelTitle="Cancelar"
 					saveTitle="Confirmar" />
 			</p:column>
 			<p:column headerText="Exluir" style="width:60px">
-			    <p:commandButton icon="pi pi-times" styleClass="rounded-button ui-button-danger" 
-			    action="#{tarefaManageBean.excluirTarefaListada(referencia)}" update="form table" />
+				<p:commandButton icon="pi pi-times"
+					styleClass="rounded-button ui-button-danger"
+					action="#{tarefaManageBean.excluirTarefaListada(referencia)}"
+					update="form table" />
+			</p:column>
+			<p:column headerText="Concluir" style="width:60px">
+				<p:commandButton icon="pi pi-check" styleClass="rounded-button"
+					action="#{tarefaManageBean.concluirTarefa(referencia)}"
+					update="form table" />
 			</p:column>
 		</p:dataTable>
 	</h:panelGroup>

@@ -17,11 +17,12 @@ public class Tarefa implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	private String titulo;
-	private String descricao;
+	private String titulo = " ";
+	private String descricao = " ";
 	private String responsavel;
-	private String prioridade;
+	private String prioridade = "Media";
 	private String deadline;
+	private String status = "Em Andamento";
 	
 	public Tarefa() {
 		
@@ -33,6 +34,14 @@ public class Tarefa implements Serializable{
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public String getTitulo() {
